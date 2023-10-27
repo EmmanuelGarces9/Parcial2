@@ -12,6 +12,7 @@ private:
     jugador* jugador1;
     jugador* jugador2;
     tablero* tablero;
+    archivos* archivo;
 
 public:
     juego(int tam_tablero, int color1, int color2);

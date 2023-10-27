@@ -26,4 +26,5 @@ int main()
     //else juego.PasarTurno().
     //}
     //}
+    return 0;
 }

@@ -9,7 +9,7 @@
 class archivos
 {
 private:
-    char* nombrearchivo;
+    char* nombre_archivo;
 public:
     archivos();
     void escribir_archivo(char* nombre_ganador, char* nombre_perdedor, int ganador, int fichas);
