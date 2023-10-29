@@ -50,3 +50,13 @@ void tablero::mostrar()
         cout << endl;
     }
 }
+
+bool tablero::validar_movimiento(int fila, int columna, char color)
+{
+    return true;
+}
+
+void tablero::mover(int fila, int columna, char color)
+{
+
+}

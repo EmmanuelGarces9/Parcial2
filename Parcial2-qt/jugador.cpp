@@ -2,7 +2,12 @@
 #include "tablero.h"
 #include "juego.h"
 
+int jugador::getColor() const
+{
+    return color;
+}
+
 jugador::jugador(char color)
 {
-    color=color;
+    this->color=color;
 }

@@ -12,8 +12,8 @@ public:
     tablero(int tam);
     ~tablero();
     void mostrar();
-    bool validar_movimiento(int fila, int columna, int color);
-    void mover(int fila, int columna, int color);
+    bool validar_movimiento(int fila, int columna, char color);
+    void mover(int fila, int columna, char color);
 };
 
 #endif // TABLERO_H

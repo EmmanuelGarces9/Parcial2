@@ -124,23 +124,21 @@ debug/archivos.o: ../Parcial2-qt/archivos.cpp ../Parcial2-qt/archivos.h \
 
 debug/juego.o: ../Parcial2-qt/juego.cpp ../Parcial2-qt/juego.h \
 		../Parcial2-qt/jugador.h \
-		../Parcial2-qt/tablero.h \
-		../Parcial2-qt/archivos.h
+		../Parcial2-qt/tablero.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\juego.o ..\Parcial2-qt\juego.cpp
 
 debug/jugador.o: ../Parcial2-qt/jugador.cpp ../Parcial2-qt/jugador.h \
 		../Parcial2-qt/tablero.h \
-		../Parcial2-qt/archivos.h \
 		../Parcial2-qt/juego.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\jugador.o ..\Parcial2-qt\jugador.cpp
 
-debug/main.o: ../Parcial2-qt/main.cpp 
+debug/main.o: ../Parcial2-qt/main.cpp ../Parcial2-qt/juego.h \
+		../Parcial2-qt/jugador.h \
+		../Parcial2-qt/tablero.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\Parcial2-qt\main.cpp
 
 debug/tablero.o: ../Parcial2-qt/tablero.cpp ../Parcial2-qt/tablero.h \
-		../Parcial2-qt/jugador.h \
-		../Parcial2-qt/archivos.h \
-		../Parcial2-qt/juego.h
+		../Parcial2-qt/jugador.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\tablero.o ..\Parcial2-qt\tablero.cpp
 
 ####### Install
