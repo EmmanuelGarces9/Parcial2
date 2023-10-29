@@ -124,23 +124,21 @@ release/archivos.o: ../Parcial2-qt/archivos.cpp ../Parcial2-qt/archivos.h \
 
 release/juego.o: ../Parcial2-qt/juego.cpp ../Parcial2-qt/juego.h \
 		../Parcial2-qt/jugador.h \
-		../Parcial2-qt/tablero.h \
-		../Parcial2-qt/archivos.h
+		../Parcial2-qt/tablero.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\juego.o ..\Parcial2-qt\juego.cpp
 
 release/jugador.o: ../Parcial2-qt/jugador.cpp ../Parcial2-qt/jugador.h \
 		../Parcial2-qt/tablero.h \
-		../Parcial2-qt/archivos.h \
 		../Parcial2-qt/juego.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\jugador.o ..\Parcial2-qt\jugador.cpp
 
-release/main.o: ../Parcial2-qt/main.cpp 
+release/main.o: ../Parcial2-qt/main.cpp ../Parcial2-qt/juego.h \
+		../Parcial2-qt/jugador.h \
+		../Parcial2-qt/tablero.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\main.o ..\Parcial2-qt\main.cpp
 
 release/tablero.o: ../Parcial2-qt/tablero.cpp ../Parcial2-qt/tablero.h \
-		../Parcial2-qt/jugador.h \
-		../Parcial2-qt/archivos.h \
-		../Parcial2-qt/juego.h
+		../Parcial2-qt/jugador.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o release\tablero.o ..\Parcial2-qt\tablero.cpp
 
 ####### Install
