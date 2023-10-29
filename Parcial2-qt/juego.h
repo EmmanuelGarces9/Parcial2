@@ -3,15 +3,13 @@
 
 #include "jugador.h"
 #include "tablero.h"
-#include "archivos.h"
-
 
 class juego
 {
 private:
     jugador* jugador1;
     jugador* jugador2;
-    tablero* tablero;
+    tablero* tableroDeJuego;
 
 public:
     juego(int tam_tablero, int color1, int color2);

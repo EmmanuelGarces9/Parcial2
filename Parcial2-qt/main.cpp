@@ -1,16 +1,19 @@
 #include <iostream>
+#include "juego.h"
+#include "tablero.h"
+#include "jugador.h"
 
 using namespace std;
 
 int main()
 {
-    //tablero(8);
-    //jugador Jugador1(1); 1 es blanco
-    //jugador Jugador2(2); 2 es negro
-    //juego Juego(tablero, jugador1, jugador2)
+    tablero tablero(8);
+    tablero.mostrar();
+    //jugador Jugador1('B');
+    //jugador Jugador2('N');
+    //juego Juego(tablero, jugador1, jugador2);
 
     //while(!Juego.vrfFinDeJuego){
-    //tablero.mostrar();
     //int fila,columna,opcion;
     //cout<<"Jugador en turno: "<< juego.jugadorActual()<<endl;
     //cout<<"Ingrese 1 para hacer movimiento<<endl;
