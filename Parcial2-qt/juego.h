@@ -9,7 +9,7 @@ class juego
 private:
     jugador* jugador1;
     jugador* jugador2;
-    tablero* tableroDeJuego;
+    tablero* tablero;
 
 public:
     juego(int tam_tablero, int color1, int color2);
