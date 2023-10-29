@@ -1,19 +1,15 @@
 #ifndef TABLERO_H
 #define TABLERO_H
 
-
 #include "jugador.h"
-#include "archivos.h"
-#include "juego.h"
-
 
 class tablero
 {
 private:
-    int tamano;
+    int tam;
     char** estado;
 public:
-    tablero(int tamano);
+    tablero(int tam);
     ~tablero();
     void mostrar();
     bool validar_movimiento(int fila, int columna, int color);

@@ -1,19 +1,24 @@
+#include <iostream>
 #include "tablero.h"
+#include "jugador.h"
 
-tablero::tablero(int tamaño)
+using namespace std;
+
+tablero::tablero(int tam)
 {
-    tamaño = tamaño;
+    this->tam = tam;
 
-    estado = new char*[tamaño]; // Inicializa la matriz del tablero
-    for (int i = 0; i < tamaño; ++i) {
-        estado[i] = new char[tamaño];
-        for (int j = 0; j < tamaño; ++j) {
+    estado = new char*[tam]; // Inicializa la matriz del tablero
+    for (int i = 0; i < tam; ++i) {
+        estado[i] = new char[tam];
+    }
+    for (int i = 0; i < tam; ++i) {
+        for (int j = 0; j < tam; ++j) {
             estado[i][j] = '-';  // Inicializar todas las celdas vacias
         }
     }
-
     // Coloca las 4 fichas iniciales del tablero
-    int centro = tamaño / 2;
+    int centro = tam / 2;
     estado[centro - 1][centro - 1] = 'B';  // Ficha blanca
     estado[centro - 1][centro] = 'N';      // Ficha negra
     estado[centro][centro - 1] = 'N';      // Ficha negra
@@ -22,7 +27,7 @@ tablero::tablero(int tamaño)
 
 tablero::~tablero()
 {
-    for (int i = 0; i < tamaño; ++i) {
+    for (int i = 0; i < tam; ++i) {
         delete[] estado[i];
     }
     delete[] estado;
@@ -32,26 +37,16 @@ void tablero::mostrar()
 {
     // Mostrar las letras de las columnas
     cout << "   ";
-    for (char columna = 'A'; columna < 'A' + tamaño; ++columna) {
+    for (char columna = 'A'; columna < 'A' + tam; ++columna) {
         cout << columna << " ";
 }
     cout << endl;
 
-    for (int i = 0; i < tamaño; ++i) {
-        cout << i << "  "; // mostrar numero de fila
-        for (int j = 0; j < tamaño; ++j) {
+    for (int i = 0; i < tam; ++i) {
+        cout << i+1 << "  "; // mostrar numero de fila
+        for (int j = 0; j < tam; ++j) {
             cout << estado[i][j] << " "; //mostrar ficha en casilla
         }
         cout << endl;
     }
-}
-
-bool tablero::validar_movimiento(int fila, int columna, int color)
-{
-
-}
-
-void tablero::mover(int fila, int columna, int color)
-{
-
 }

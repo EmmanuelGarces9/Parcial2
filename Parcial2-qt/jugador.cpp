@@ -1,11 +1,8 @@
 #include "jugador.h"
+#include "tablero.h"
+#include "juego.h"
 
-char jugador::getColor() const
+jugador::jugador(char color)
 {
-    return color;
-}
-
-jugador::jugador()
-{
-
+    color=color;
 }

@@ -3,8 +3,6 @@
 
 #include "jugador.h"
 #include "tablero.h"
-#include "archivos.h"
-
 
 class juego
 {
