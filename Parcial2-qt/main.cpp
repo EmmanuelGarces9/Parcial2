@@ -1,30 +1,38 @@
 #include <iostream>
+#include "juego.h"
+#include "tablero.h"
+#include "jugador.h"
 
 using namespace std;
 
 int main()
 {
-    //tablero(8);
-    //jugador Jugador1(1); 1 es blanco
-    //jugador Jugador2(2); 2 es negro
-    //juego Juego(tablero, jugador1, jugador2)
+    int i=0;
+    tablero tablero(8);
+    tablero.mostrar();
+    jugador Jugador1('B');
+    jugador Jugador2('N');
+    juego Juego(8,'B','N');
 
-    //while(!Juego.vrfFinDeJuego){
-    //tablero.mostrar();
-    //int fila,columna,opcion;
-    //cout<<"Jugador en turno: "<< juego.jugadorActual()<<endl;
-    //cout<<"Ingrese 1 para hacer movimiento<<endl;
-    //cout<<"Ingrese 2 para pasar turno<<endl;
-    //cin>>opcion;
-    //switch(opción):
-    //case 1:
-    //cout<<"Ingres su movimiento(fila y columna)";
-    //cin>>fila>>columna;
-    //case 2:
-    //if(jugador.vrfMovimientosDisponibles()){
-    //cout<<"No puede pasar turno. Aun tiene movimientos disponibles";
-    //else juego.PasarTurno().
-    //}
-    //}
-    return 0;
+    while(i<10){
+        int fila,columna,opcion;
+        cout<<"Jugador en turno: "<< Juego.getJugadorActual()<<endl;
+        cout<<"Ingrese 1 para hacer movimiento"<<endl;
+        cout<<"Ingrese 2 para pasar turno"<<endl;
+        cin>>opcion;
+        i++;
+
+        switch(opcion){
+        case 1:{
+            cout<<"Ingrese su movimiento(fila y columna)";
+            cin>>fila>>columna;
+            Juego.realizar_movimiento(fila,columna);
+            break;
+        }
+        case 2:{
+            Juego.cambiar_turno();
+            break;
+        }
+        }
+    }
 }

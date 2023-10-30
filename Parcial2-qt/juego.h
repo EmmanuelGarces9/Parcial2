@@ -3,19 +3,17 @@
 
 #include "jugador.h"
 #include "tablero.h"
-#include "archivos.h"
-
 
 class juego
 {
 private:
     jugador* jugador1;
     jugador* jugador2;
-    tablero* tablero;
-    archivos* archivo;
+    jugador* jugadorActual;
+    tablero* tableroDeJuego;
 
 public:
-    juego(int tam_tablero, int color1, int color2);
+    juego(int tam_tablero, char colorJugador1, char colorJugador2);
     ~juego();
     void realizar_movimiento(int fila, int columna);
     void cambiar_turno();
@@ -23,6 +21,7 @@ public:
     int vrf_ganador();
 
 
+    jugador *getJugadorActual() const;
 };
 
 #endif // JUEGO_H

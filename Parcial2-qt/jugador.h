@@ -2,20 +2,17 @@
 #define JUGADOR_H
 
 #include "tablero.h"
-#include "archivos.h"
-#include "juego.h"
-
-
 
 class jugador
 {
 private:
     int color;
 public:
-    jugador(int color);
-    int getColor() const;
-    bool vrf_mov_disp(tablero* tablero);
+    jugador(char color);
 
+//    bool vrf_mov_disp(tablero* tablero);
+
+    int getColor() const;
 };
 
 #endif // JUGADOR_H
