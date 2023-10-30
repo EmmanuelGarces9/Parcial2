@@ -1,5 +1,6 @@
 #include "archivos.h"
 
+
 archivos::archivos()
 {
 
@@ -34,8 +35,9 @@ void archivos::mostrar_historial()
         }
     }
     else {
-        std::cout << "Error al abrir el archivo " << nombre_archivo <<endl;
+        cout << "Error al abrir el archivo " << nombre_archivo <<endl;
     }
 
     archivo.close();
 }
+
