@@ -4,6 +4,9 @@
 #include "jugador.h"
 #include "tablero.h"
 #include "juego.h"
+#include <fstream>
+#include <ctime>
+#include <chrono>
 
 
 class archivos

@@ -16,4 +16,4 @@ public:
     void mover(int fila, int columna, char color);
 };
 
-#endif // TABLERO_H
+#endif // TABLERO_H5
