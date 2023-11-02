@@ -1,6 +1,9 @@
 #include "archivos.h"
 
+#include <iostream>
 
+
+using namespace std;
 
 archivos::archivos()
 {

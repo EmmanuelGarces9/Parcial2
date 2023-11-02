@@ -8,16 +8,12 @@ using namespace std;
 
 int main()
 {
-
-    int i=0;
-
     tablero tablero(8);
     tablero.mostrar();
     jugador jugador1('B');
     jugador jugador2('N');
     juego juego(8,'B','N');
     archivos archivo;
-
     while(true){
         if(juego.vrf_fin_juego()==false){
             int fila, columna, opcion;
@@ -63,8 +59,6 @@ int main()
                 archivo.escribir_archivo(elganador, elperdedor, ganador,fichas_Ganador);
             }
 
-
-        }
     }
 
 }
