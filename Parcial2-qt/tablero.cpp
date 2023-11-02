@@ -56,7 +56,7 @@ bool tablero::validar_movimiento(int fila, int columna, char color)
 {
     int direcciones[8][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
 
-    // Verifica si el movimiento está dentro de los límites del tablero y si la celda está vacía
+    // Verifica si el movimiento esta dentro de los limites del tablero y si la celda esta vacia
     if (fila >= 0 && fila < tam && columna >= 0 && columna < tam && estado[fila][columna] == '-') {
         // Determina el color del oponente
         char oponente;
@@ -70,20 +70,20 @@ bool tablero::validar_movimiento(int fila, int columna, char color)
         for (int i = 0; i < 8; ++i) {
             int f = fila + direcciones[i][0];
             int c = columna + direcciones[i][1];
-            bool atrapa = false;
+            bool captura = false;
 
-            // Verifica si hay fichas capturables en esta dirección
+            // Verifica si hay fichas capturables en esta direccion
             while (f >= 0 && f < tam && c >= 0 && c < tam) {
                 if (estado[f][c] == oponente) {
-                    atrapa = true; // El movimiento es válido
+                    captura = true; // El movimiento es valido
                 }else if (estado[f][c] == color) {
-                    if (atrapa) {
-                        return true; // El movimiento es válido
-                    }else {
-                        break; // No hay fichas capturables en esta dirección
+                    if (captura) { //Solo es valido si tha capturado alguna ficha del oponente
+                        return true; // El movimiento es valido
+                    }else{
+                        break; // No hay fichas capturables en esta direccion
                     }
                 } else if (estado[f][c] == '-') {
-                    break; // No hay fichas capturables en esta dirección
+                    break; // No hay fichas capturables en esta direccion
                 }
 
                 // Mueve en la misma dirección
@@ -93,10 +93,48 @@ bool tablero::validar_movimiento(int fila, int columna, char color)
         }
     }
 
-    return false; // El movimiento no es válido
+    return false; // El movimiento no es valido
 }
 
 void tablero::mover(int fila, int columna, char color)
 {
-    estado[fila-1][columna-1]=color;
+    int direcciones[8][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
+
+    estado[fila][columna] = color;
+    for (int i = 0; i < 8; ++i) {
+        CambiarColorDeFichas(fila, columna, color, direcciones[i][0], direcciones[i][1]);
+    }
+}
+
+void tablero::CambiarColorDeFichas(int fila, int columna, int deltaFila, int deltaColumna, char color)
+{
+    int f = fila + deltaFila;
+    int c = columna + deltaColumna;
+    bool captura = false;
+
+    while (f >= 0 && f < tam && c >= 0 && c < tam) {
+        if (estado[f][c] == '-') {
+            // Si encontramos una casilla vacia, no hay fichas capturadas en esta direccion
+            break;
+        }
+        if (estado[f][c] == color) {
+            // Si encontramos una ficha del mismo color se debe capturar las intermedias
+            captura = true;
+            break;
+        }
+        // Continuar en la misma dirección
+        f += deltaFila;
+        c += deltaColumna;
+    }
+
+    // Cambiar el color de las fichas capturadas
+    if (captura) {
+        f = fila + deltaFila;
+        c = columna + deltaColumna;
+        while (estado[f][c] != color) {
+            estado[f][c] = color;
+            f += deltaFila;
+            c += deltaColumna;
+        }
+    }
 }
