@@ -14,6 +14,7 @@ public:
     void mostrar();
     bool validar_movimiento(int fila, int columna, char color);
     void mover(int fila, int columna, char color);
+    void CambiarColorDeFichas(int fila, int columna, int deltaFila, int deltaColumna, char color);
 };
 
 #endif // TABLERO_H5
