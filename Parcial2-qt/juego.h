@@ -18,9 +18,8 @@ public:
     void realizar_movimiento(int fila, int columna);
     void cambiar_turno();
     bool vrf_fin_juego();
-    int vrf_ganador();
-
-
+    int vrf_ganador(int fichas_ganador);
+    void pre_cambiar_turno();
     jugador *getJugadorActual() const;
 };
 

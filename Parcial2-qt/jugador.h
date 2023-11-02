@@ -6,13 +6,13 @@
 class jugador
 {
 private:
-    int color;
+    char color;
 public:
     jugador(char color);
 
-//    bool vrf_mov_disp(tablero* tablero);
+    bool vrf_mov_disp(tablero* tablero);
 
-    int getColor() const;
+    char getColor() const;
 };
 
 #endif // JUGADOR_H

@@ -14,6 +14,8 @@ public:
     void mostrar();
     bool validar_movimiento(int fila, int columna, char color);
     void mover(int fila, int columna, char color);
+    bool tablero_lleno();
+    int contar_fichas(char color);
 };
 
 #endif // TABLERO_H5

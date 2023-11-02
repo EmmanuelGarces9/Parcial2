@@ -1,6 +1,7 @@
 #include "archivos.h"
 
 
+
 archivos::archivos()
 {
 
@@ -40,4 +41,3 @@ void archivos::mostrar_historial()
 
     archivo.close();
 }
-
