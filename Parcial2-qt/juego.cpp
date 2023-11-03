@@ -72,6 +72,7 @@ char juego::vrf_ganador(int &fichas_ganador)
         return jugador2->getColor();
     }
     else {
+        fichas_ganador=fichas_1;
         return 'e'; // Empate
     }
 

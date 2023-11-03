@@ -156,7 +156,7 @@ void tablero::mover(int fila, int columna, char color)
 {
     int direcciones[8][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
 
-    estado[fila][columna] = color;
+    estado[fila-1][columna-1] = color;
     for (int i = 0; i < 8; ++i) {
         CambiarColorDeFichas(fila, columna, color, direcciones[i][0], direcciones[i][1]);
     }

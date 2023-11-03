@@ -15,7 +15,6 @@ public:
     char getColor() const;
 
     bool vrf_mov_disp();
-    int getColor() const;
 
 };
 

@@ -10,15 +10,20 @@ archivos::archivos()
 
 }
 
-void archivos::escribir_archivo(char *nombre_ganador, char *nombre_perdedor, int ganador, int fichas)
+void archivos::escribir_archivo(char *nombre_ganador, char *nombre_perdedor, int fichas, bool comprobar)
 {
     fstream archivo;
     archivo.open(nombre_archivo, ios::app);
     if(archivo.is_open()){
         auto now = std::chrono::system_clock::now();
         time_t end_time = std::chrono::system_clock::to_time_t(now);
-             archivo<<"\nJugaron: "<<nombre_ganador<<" y "<<nombre_perdedor<< " en la fecha:"<<ctime(&end_time)<<'\n';
-             archivo<<"Ganador: "<<nombre_ganador<<" con fichas: "<<fichas<<'\n';
+        archivo<<"\nJugaron: "<<nombre_ganador<<" y "<<nombre_perdedor<< " en la fecha:"<<ctime(&end_time)<<'\n';
+        if (comprobar){
+            archivo<<"Ganador: "<<nombre_ganador<<" con fichas: "<<fichas<<'\n';
+        }
+        else{
+            archivo<<"Hubo empate con fichas: "<<fichas<<'\n';
+        }
 
     }
     else{

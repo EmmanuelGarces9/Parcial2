@@ -2,7 +2,7 @@
 #include "jugador.h"
 #include "juego.h"
 
-int jugador::getColor() const
+char jugador::getColor() const
 {
     return color;
 }
