@@ -183,7 +183,7 @@ bool tablero::vrf_mov_disp(char color)
         for (int columna = 0; columna < tam; ++columna) {
             if (obtenerValor(fila,columna) == '-') {
                 // Si la celda esta vacia, verificar si es un movimiento valido para el jugador actual
-                if (validar_movimiento(fila, columna, color)) {
+                if (validar_movimiento(fila+1, columna+1, color)) {
                     return true; //El jugador si tiene movimientos disponibles
                 }
             }

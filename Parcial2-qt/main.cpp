@@ -38,6 +38,8 @@ int main()
             cin>>opcion;
             switch(opcion){
                 case '1':{
+                    bool cambiar=true;
+                    bool n=false;
                     cout<<"Ingrese la fila: "<<endl;
                     cin>>fila;
                     cout<<"Ingrese la columna"<<endl;
@@ -45,15 +47,33 @@ int main()
                     int col=columna-'A'+1;
                     bool mov_valido=juego.realizar_movimiento(fila, col);
                     while(mov_valido==false){
-                        cout<<"movimiento no valido"<<endl;
-                        cout<<"Ingrese la fila: "<<endl;
-                        cin>>fila;
-                        cout<<"Ingrese la columna"<<endl;
-                        cin>>columna;
-                        int col=columna-'A'+1;
-                        mov_valido=juego.realizar_movimiento(fila, col);
+                        char opcion2;
+                        cout<<"Desea pasar el turno? Ingrese 1 si desea pasar el turno o 0 si desea intentar mover de nuevo"<<endl;
+                        cin>>opcion;
+                        if(opcion=='1'){
+                            if(juego.pre_cambiar_turno()){
+                                juego.cambiar_turno();
+                                mov_valido=true;
+                                cambiar=false;
+                            }
+                            else{
+                                cout<<"Aun tiene movimientos disponibles, no puede cambiar de turno"<<endl;
+                                 n=true;
+                            }
+                        }
+                        else if(opcion=='0' or n==true){
+                            cout<<"Ingrese la fila: "<<endl;
+                            cin>>fila;
+                            cout<<"Ingrese la columna"<<endl;
+                            cin>>columna;
+                            int col=columna-'A'+1;
+                            mov_valido=juego.realizar_movimiento(fila, col);
+                        }
+                        else{
+                            cout<<"Opcion no valida. Ingrese una opcion valida"<<endl;
+                        }
                     }
-                    if(mov_valido){
+                    if(mov_valido and cambiar){
                         juego.getTableroDeJuego()->mostrar();
                         juego.cambiar_turno();
                     }
