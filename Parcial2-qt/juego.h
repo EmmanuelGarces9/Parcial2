@@ -15,12 +15,13 @@ private:
 public:
     juego(int tam_tablero, char colorJugador1, char colorJugador2);
     ~juego();
-    void realizar_movimiento(int fila, int columna);
+    bool realizar_movimiento(int fila, int columna);
     void cambiar_turno();
     bool vrf_fin_juego();
-    int vrf_ganador(int fichas_ganador);
-    void pre_cambiar_turno();
+    char vrf_ganador(int &fichas_ganador);
+    bool pre_cambiar_turno();
     jugador *getJugadorActual() const;
+    tablero *getTableroDeJuego() const;
 };
 
 #endif // JUEGO_H

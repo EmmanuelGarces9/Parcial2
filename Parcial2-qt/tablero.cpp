@@ -3,65 +3,20 @@
 #include "jugador.h"
 
 
-
 using namespace std;
 
 
-tablero::tablero(int tam)
+int tablero::getTam() const
 {
-    this->tam = tam;
-
-    estado = new char*[tam]; // Inicializa la matriz del tablero
-    for (int i = 0; i < tam; ++i) {
-        estado[i] = new char[tam];
-    }
-    for (int i = 0; i < tam; ++i) {
-        for (int j = 0; j < tam; ++j) {
-            estado[i][j] = '-';  // Inicializar todas las celdas vacias
-        }
-    }
-    // Coloca las 4 fichas iniciales del tablero
-    int centro = tam / 2;
-    estado[centro - 1][centro - 1] = 'B';  // Ficha blanca
-    estado[centro - 1][centro] = 'N';      // Ficha negra
-    estado[centro][centro - 1] = 'N';      // Ficha negra
-    estado[centro][centro] = 'B';          // Ficha blanca
+    return tam;
 }
 
-tablero::~tablero()
+char tablero::obtenerValor(int fila, int columna)
 {
-    for (int i = 0; i < tam; ++i) {
-        delete[] estado[i];
-    }
-    delete[] estado;
-}
-
-void tablero::mostrar()
-{
-    // Mostrar las letras de las columnas
-    cout << "   ";
-    for (char columna = 'A'; columna < 'A' + tam; ++columna) {
-        cout << columna << " ";
-}
-    cout << endl;
-
-    for (int i = 0; i < tam; ++i) {
-        cout << i+1 << "  "; // mostrar numero de fila
-        for (int j = 0; j < tam; ++j) {
-            cout << estado[i][j] << " "; //mostrar ficha en casilla
-        }
-        cout << endl;
-    }
-}
-
-bool tablero::validar_movimiento(int fila, int columna, char color)
-{
-    return true;
+    return estado[fila][columna];
 }
 
 tablero::tablero(int tam)
-
-
 {
     this->tam = tam;
 
@@ -111,7 +66,7 @@ void tablero::mostrar()
 bool tablero::validar_movimiento(int fila, int columna, char color)
 {
     int direcciones[8][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
-
+    fila=fila-1; columna=columna-1;
     // Verifica si el movimiento esta dentro de los limites del tablero y si la celda esta vacia
     if (fila >= 0 && fila < tam && columna >= 0 && columna < tam && estado[fila][columna] == '-') {
         // Determina el color del oponente
@@ -164,6 +119,7 @@ void tablero::mover(int fila, int columna, char color)
 
 void tablero::CambiarColorDeFichas(int fila, int columna, int deltaFila, int deltaColumna, char color)
 {
+    fila=fila-1; columna=columna-1;
     int f = fila + deltaFila;
     int c = columna + deltaColumna;
     bool captura = false;
@@ -218,4 +174,20 @@ int tablero::contar_fichas(char color)
         }
     }
     return fichas;
+}
+
+bool tablero::vrf_mov_disp(char color)
+{
+
+    for (int fila = 0; fila < tam; ++fila) {
+        for (int columna = 0; columna < tam; ++columna) {
+            if (obtenerValor(fila,columna) == '-') {
+                // Si la celda esta vacia, verificar si es un movimiento valido para el jugador actual
+                if (validar_movimiento(fila, columna, color)) {
+                    return true; //El jugador si tiene movimientos disponibles
+                }
+            }
+        }
+    }
+    return false;
 }

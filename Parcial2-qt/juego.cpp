@@ -10,6 +10,11 @@ jugador *juego::getJugadorActual() const
     return jugadorActual;
 }
 
+tablero *juego::getTableroDeJuego() const
+{
+    return tableroDeJuego;
+}
+
 juego::juego(int tam_tablero, char colorJugador1, char colorJugador2)
 {
     jugador1 = new jugador(colorJugador1);
@@ -31,7 +36,7 @@ bool juego::realizar_movimiento(int fila, int columna)
         tableroDeJuego->mover(fila,columna,jugadorActual->getColor());
         return true;
     }else{
-        cout<<"El movimiento no está permitido"<<endl;
+        cout<<"El movimiento no esta permitido"<<endl;
         return false;
     }
 }
@@ -49,8 +54,8 @@ bool juego::vrf_fin_juego()
         return true;
     }
 
-    bool no_mov_1 = !jugador1->vrf_mov_disp(tablero);
-    bool no_mov_2 = !jugador2->vrf_mov_disp(tablero);
+    bool no_mov_1 = !tableroDeJuego->vrf_mov_disp(jugador1->getColor());
+    bool no_mov_2 = !tableroDeJuego->vrf_mov_disp(jugador2->getColor());
 
     if (no_mov_1 && no_mov_2) {
         return true;
@@ -80,7 +85,7 @@ char juego::vrf_ganador(int &fichas_ganador)
 
 bool juego::pre_cambiar_turno()
 {
-    if(getJugadorActual()->vrf_mov_disp(tableroDeJuego)){
+    if(tableroDeJuego->vrf_mov_disp(getJugadorActual()->getColor())){
         return false;
     }
     return true;

@@ -8,33 +8,32 @@ using namespace std;
 
 int main()
 {
-    tablero tablero(8);
-    tablero.mostrar();
     jugador jugador1('B');
     jugador jugador2('N');
     juego juego(8,'B','N');
     archivos archivo;
+    juego.getTableroDeJuego()->mostrar();
     char opcion, opcion1;
     bool jugando=false;
     while (!jugando) {
-        cout << "¿Qué desea hacer?" << endl;
+        cout << "Que desea hacer?" << endl;
         cout << "1. Jugar una partida" << endl;
         cout << "2. Ver el historial de partidas" << endl;
-        cout << "Ingrese su elección (1 o 2): ";
+        cout << "Ingrese su eleccion (1 o 2): ";
         cin >> opcion1;
-        if (opcion == '1') {
+        if (opcion1 == '1') {
             jugando = true;
-        } else if (opcion == '2') {
+        } else if (opcion1 == '2') {
             archivo.mostrar_historial();
         } else {
-            cout << "Opción no válida. Por favor, ingrese 1 o 2." << endl;
+            cout << "Opcion no valida. Por favor, ingrese 1 o 2." << endl;
         }
     }
 
     while(jugando){
         if(juego.vrf_fin_juego()==false){
-            int fila, columna, opcion;
-            cout<<"Es el turno de las fichas: "<<juego.getJugadorActual()<<endl;
+            int fila, opcion;char columna;
+            cout<<"Es el turno de las fichas: "<<juego.getJugadorActual()->getColor()<<endl;
             cout<<"Ingrese 1 para realizar su movimiento o 2 para pasar de turno: "<<endl;
             cin>>opcion;
             switch(opcion){
@@ -43,17 +42,19 @@ int main()
                     cin>>fila;
                     cout<<"Ingrese la columna"<<endl;
                     cin>>columna;
-                    bool mov_valido=juego.realizar_movimiento(fila, columna);
+                    int col=columna-'A'+1;
+                    bool mov_valido=juego.realizar_movimiento(fila, col);
                     while(mov_valido==false){
-                        cout<<"movimiento no válido"<<endl;
+                        cout<<"movimiento no valido"<<endl;
                         cout<<"Ingrese la fila: "<<endl;
                         cin>>fila;
                         cout<<"Ingrese la columna"<<endl;
                         cin>>columna;
-                        mov_valido=juego.realizar_movimiento(fila, columna);
+                        int col=((int)(columna-'0'))-64;
+                        mov_valido=juego.realizar_movimiento(fila, col);
                     }
                     if(mov_valido){
-                        tablero.mostrar();
+                        juego.getTableroDeJuego()->mostrar();
                         juego.cambiar_turno();
                     }
                     break;
@@ -71,21 +72,21 @@ int main()
             char elganador[250];
             char elperdedor[250];
             if(ganador!='e'){
-                cout << "El ganador es el Jugador " << ganador << " con " << fichasGanador << " fichas." << endl;
+                cout << "El ganador es el Jugador " << ganador << " con " << fichas_Ganador << " fichas." << endl;
                 cout<<"Escriba el nombre del jugador que gano: ";
                 cin>>elganador;
                 cout<<"Escriba el nombre del jugador que perdio ";
                 cin>>elperdedor;
-                archivo.escribir_archivo(elganador, elperdedor, ganador,fichas_Ganador, 1);
+                archivo.escribir_archivo(elganador, elperdedor, fichas_Ganador, 1);
                 jugando=false;
             }
             else{
-                cout << "El juego quedó empatado con " << fichasGanador << " fichas." << endl;
+                cout << "El juego quedó empatado con " << fichas_Ganador << " fichas." << endl;
                 cout<<"Escriba el nombre de cada jugador uno por uno por favor: ";
                 cin>>elganador;
                 cout<<"Escriba el nombre del otro jugador: ";
                 cin>>elperdedor;
-                archivo.escribir_archivo(elganador, elperdedor, ganador,fichas_Ganador, 0);
+                archivo.escribir_archivo(elganador, elperdedor, fichas_Ganador, 0);
                 jugando=false;
             }
 
