@@ -7,7 +7,7 @@ using namespace std;
 
 archivos::archivos()
 {
-
+    nombre_archivo="historial.txt";
 }
 
 void archivos::escribir_archivo(char *nombre_ganador, char *nombre_perdedor, int fichas, bool comprobar)
@@ -44,7 +44,7 @@ void archivos::mostrar_historial()
         }
     }
     else {
-        cout << "Error al abrir el archivo " << nombre_archivo <<endl;
+        cout << "Error al abrir el archivo " << "historial" <<endl;
     }
 
     archivo.close();

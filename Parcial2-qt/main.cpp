@@ -32,12 +32,12 @@ int main()
 
     while(jugando){
         if(juego.vrf_fin_juego()==false){
-            int fila, opcion;char columna;
+            int fila;char columna,opcion;
             cout<<"Es el turno de las fichas: "<<juego.getJugadorActual()->getColor()<<endl;
             cout<<"Ingrese 1 para realizar su movimiento o 2 para pasar de turno: "<<endl;
             cin>>opcion;
             switch(opcion){
-                case 1:{
+                case '1':{
                     cout<<"Ingrese la fila: "<<endl;
                     cin>>fila;
                     cout<<"Ingrese la columna"<<endl;
@@ -50,7 +50,7 @@ int main()
                         cin>>fila;
                         cout<<"Ingrese la columna"<<endl;
                         cin>>columna;
-                        int col=((int)(columna-'0'))-64;
+                        int col=columna-'A'+1;
                         mov_valido=juego.realizar_movimiento(fila, col);
                     }
                     if(mov_valido){
@@ -59,11 +59,16 @@ int main()
                     }
                     break;
                 }
-                case 2:{
+                case '2':{
                     if(juego.pre_cambiar_turno()) juego.cambiar_turno();
                     else cout<<"aun tiene movimientos disponibles, no puede cambiar de turno"<<endl;
                     break;
                 }
+                default:{
+                    cout<<"no es una opcion valida, ingrese 1 o 2"<<endl;
+                }
+
+
             }
         }
         else{

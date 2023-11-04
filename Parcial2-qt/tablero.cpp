@@ -113,7 +113,7 @@ void tablero::mover(int fila, int columna, char color)
 
     estado[fila-1][columna-1] = color;
     for (int i = 0; i < 8; ++i) {
-        CambiarColorDeFichas(fila, columna, color, direcciones[i][0], direcciones[i][1]);
+        CambiarColorDeFichas(fila, columna, direcciones[i][0], direcciones[i][1], color);
     }
 }
 
@@ -191,3 +191,13 @@ bool tablero::vrf_mov_disp(char color)
     }
     return false;
 }
+
+
+
+
+
+
+
+
+
+

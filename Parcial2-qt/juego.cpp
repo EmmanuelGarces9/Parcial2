@@ -43,10 +43,14 @@ bool juego::realizar_movimiento(int fila, int columna)
 
 void juego::cambiar_turno()
 {
-    jugador* temp = jugador1;
-    jugador1 = jugador2;
-    jugador2 = temp;
+        if (jugadorActual == jugador1) {
+            jugadorActual = jugador2;
+        } else {
+            jugadorActual = jugador1;
+        }
 }
+
+
 
 bool juego::vrf_fin_juego()
 {
