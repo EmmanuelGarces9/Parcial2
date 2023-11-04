@@ -15,7 +15,7 @@ private:
     char* nombre_archivo;
 public:
     archivos();
-    void escribir_archivo(char* nombre_ganador, char* nombre_perdedor, int ganador, int fichas);
+    void escribir_archivo(char *nombre_ganador, char *nombre_perdedor, int fichas, bool comprobar);
     void mostrar_historial();
 };
 

@@ -2,10 +2,21 @@
 #include "tablero.h"
 #include "jugador.h"
 
+
 using namespace std;
 
-tablero::tablero(int tam)
 
+int tablero::getTam() const
+{
+    return tam;
+}
+
+char tablero::obtenerValor(int fila, int columna)
+{
+    return estado[fila][columna];
+}
+
+tablero::tablero(int tam)
 {
     this->tam = tam;
 
@@ -55,7 +66,7 @@ void tablero::mostrar()
 bool tablero::validar_movimiento(int fila, int columna, char color)
 {
     int direcciones[8][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
-
+    fila=fila-1; columna=columna-1;
     // Verifica si el movimiento esta dentro de los limites del tablero y si la celda esta vacia
     if (fila >= 0 && fila < tam && columna >= 0 && columna < tam && estado[fila][columna] == '-') {
         // Determina el color del oponente
@@ -100,14 +111,15 @@ void tablero::mover(int fila, int columna, char color)
 {
     int direcciones[8][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
 
-    estado[fila][columna] = color;
+    estado[fila-1][columna-1] = color;
     for (int i = 0; i < 8; ++i) {
-        CambiarColorDeFichas(fila, columna, color, direcciones[i][0], direcciones[i][1]);
+        CambiarColorDeFichas(fila, columna, direcciones[i][0], direcciones[i][1], color);
     }
 }
 
 void tablero::CambiarColorDeFichas(int fila, int columna, int deltaFila, int deltaColumna, char color)
 {
+    fila=fila-1; columna=columna-1;
     int f = fila + deltaFila;
     int c = columna + deltaColumna;
     bool captura = false;
@@ -138,3 +150,54 @@ void tablero::CambiarColorDeFichas(int fila, int columna, int deltaFila, int del
         }
     }
 }
+
+bool tablero::tablero_lleno()
+{
+    for (int fila = 0; fila < tam; fila++) {
+           for (int columna = 0; columna < tam; columna++) {
+               if (estado[fila][columna] == '-') {
+                    return false;
+               }
+           }
+       }
+    return true;
+}
+
+int tablero::contar_fichas(char color)
+{
+    int fichas=0;
+    for (int fila = 0; fila < tam; fila++) {
+        for (int columna = 0; columna < tam; columna++) {
+            if (estado[fila][columna]==color){
+                fichas++;
+            }
+        }
+    }
+    return fichas;
+}
+
+bool tablero::vrf_mov_disp(char color)
+{
+
+    for (int fila = 0; fila < tam; ++fila) {
+        for (int columna = 0; columna < tam; ++columna) {
+            if (obtenerValor(fila,columna) == '-') {
+                // Si la celda esta vacia, verificar si es un movimiento valido para el jugador actual
+                if (validar_movimiento(fila, columna, color)) {
+                    return true; //El jugador si tiene movimientos disponibles
+                }
+            }
+        }
+    }
+    return false;
+}
+
+
+
+
+
+
+
+
+
+

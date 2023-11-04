@@ -1,15 +1,19 @@
 #ifndef JUGADOR_H
 #define JUGADOR_H
 
+#include "tablero.h"
 
 class jugador
 {
 private:
-    int color;
+    char color;
 public:
     jugador(char color);
-    bool vrf_mov_disp();
-    int getColor() const;
+
+    char getColor() const;
+
+
+
 };
 
 #endif // JUGADOR_H
