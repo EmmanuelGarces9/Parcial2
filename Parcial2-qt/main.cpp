@@ -49,8 +49,8 @@ int main()
                     while(mov_valido==false){
                         char opcion2;
                         cout<<"Desea pasar el turno? Ingrese 1 si desea pasar el turno o 0 si desea intentar mover de nuevo"<<endl;
-                        cin>>opcion;
-                        if(opcion=='1'){
+                        cin>>opcion2;
+                        if(opcion2=='1'){
                             if(juego.pre_cambiar_turno()){
                                 juego.cambiar_turno();
                                 mov_valido=true;
@@ -58,10 +58,10 @@ int main()
                             }
                             else{
                                 cout<<"Aun tiene movimientos disponibles, no puede cambiar de turno"<<endl;
-                                 n=true;
+                                n=true;
                             }
                         }
-                        else if(opcion=='0' or n==true){
+                        else if(opcion2=='0' or n==true){
                             cout<<"Ingrese la fila: "<<endl;
                             cin>>fila;
                             cout<<"Ingrese la columna"<<endl;

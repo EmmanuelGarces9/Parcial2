@@ -12,7 +12,7 @@
 class archivos
 {
 private:
-    char* nombre_archivo;
+    const char* nombre_archivo;
 public:
     archivos();
     void escribir_archivo(char *nombre_ganador, char *nombre_perdedor, int fichas, bool comprobar);
