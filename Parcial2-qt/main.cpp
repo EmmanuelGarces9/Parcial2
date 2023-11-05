@@ -8,9 +8,10 @@ using namespace std;
 
 int main()
 {
+    int tam=8;
     jugador jugador1('B');
     jugador jugador2('N');
-    juego juego(8,'B','N');
+    juego juego(tam,'B','N');
     archivos archivo;
     juego.getTableroDeJuego()->mostrar();
     char opcion, opcion1;
@@ -32,7 +33,7 @@ int main()
 
     while(jugando){
         if(juego.vrf_fin_juego()==false){
-            int fila;char columna,opcion;
+            char fila,columna,opcion;
             cout<<"Es el turno de las fichas: "<<juego.getJugadorActual()->getColor()<<endl;
             cout<<"Ingrese 1 para realizar su movimiento o 2 para pasar de turno: "<<endl;
             cin>>opcion;
@@ -44,11 +45,12 @@ int main()
                     cin>>fila;
                     cout<<"Ingrese la columna"<<endl;
                     cin>>columna;
+                    int fila_int=(int)(fila-'0');
                     int col=columna-'A'+1;
-                    bool mov_valido=juego.realizar_movimiento(fila, col);
+                    bool mov_valido=juego.realizar_movimiento(fila_int, col);
                     while(mov_valido==false){
                         char opcion2;
-                        cout<<"Desea pasar el turno? Ingrese 1 si desea pasar el turno o 0 si desea intentar mover de nuevo"<<endl;
+                        cout<<"Desea pasar el turno? Ingrese 1 si desea pasar el turno o 2 si desea intentar mover de nuevo"<<endl;
                         cin>>opcion2;
                         if(opcion2=='1'){
                             if(juego.pre_cambiar_turno()){
@@ -61,13 +63,14 @@ int main()
                                 n=true;
                             }
                         }
-                        else if(opcion2=='0' or n==true){
+                        else if(opcion2=='2' or n==true){
                             cout<<"Ingrese la fila: "<<endl;
                             cin>>fila;
                             cout<<"Ingrese la columna"<<endl;
                             cin>>columna;
-                            int col=columna-'A'+1;
-                            mov_valido=juego.realizar_movimiento(fila, col);
+                            fila_int=(int)(fila-'0');
+                            col=columna-'A'+1;
+                            mov_valido=juego.realizar_movimiento(fila_int, col);
                         }
                         else{
                             cout<<"Opcion no valida. Ingrese una opcion valida"<<endl;
