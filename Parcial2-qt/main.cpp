@@ -24,6 +24,7 @@ int main()
         cin >> opcion1;
         if (opcion1 == '1') {
             jugando = true;
+            cout<<"Recuerde ingresar las columnas con letras mayusculas"<<endl;
         } else if (opcion1 == '2') {
             archivo.mostrar_historial();
         } else {
@@ -43,7 +44,7 @@ int main()
                     bool n=false;
                     cout<<"Ingrese la fila: "<<endl;
                     cin>>fila;
-                    cout<<"Ingrese la columna"<<endl;
+                    cout<<"Ingrese la columna:"<<endl;
                     cin>>columna;
                     int fila_int=(int)(fila-'0');
                     int col=columna-'A'+1;
@@ -66,7 +67,7 @@ int main()
                         else if(opcion2=='2' or n==true){
                             cout<<"Ingrese la fila: "<<endl;
                             cin>>fila;
-                            cout<<"Ingrese la columna"<<endl;
+                            cout<<"Ingrese la columna:"<<endl;
                             cin>>columna;
                             fila_int=(int)(fila-'0');
                             col=columna-'A'+1;
@@ -103,13 +104,13 @@ int main()
                 cout << "El ganador es el Jugador " << ganador << " con " << fichas_Ganador << " fichas." << endl;
                 cout<<"Escriba el nombre del jugador que gano: ";
                 cin>>elganador;
-                cout<<"Escriba el nombre del jugador que perdio ";
+                cout<<"Escriba el nombre del jugador que perdio: ";
                 cin>>elperdedor;
                 archivo.escribir_archivo(elganador, elperdedor, fichas_Ganador, 1);
                 jugando=false;
             }
             else{
-                cout << "El juego quedó empatado con " << fichas_Ganador << " fichas." << endl;
+                cout << "El juego quedo empatado con " << fichas_Ganador << " fichas." << endl;
                 cout<<"Escriba el nombre de cada jugador uno por uno por favor: ";
                 cin>>elganador;
                 cout<<"Escriba el nombre del otro jugador: ";
