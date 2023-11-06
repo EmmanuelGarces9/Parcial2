@@ -13,7 +13,6 @@ int main()
     jugador jugador2('N');
     juego juego(tam,'B','N');
     archivos archivo;
-    juego.getTableroDeJuego()->mostrar();
     char opcion, opcion1;
     bool jugando=false;
     while (!jugando) {
@@ -24,6 +23,7 @@ int main()
         cin >> opcion1;
         if (opcion1 == '1') {
             jugando = true;
+            juego.getTableroDeJuego()->mostrar();
             cout<<"Recuerde ingresar las columnas con letras mayusculas"<<endl;
         } else if (opcion1 == '2') {
             archivo.mostrar_historial();

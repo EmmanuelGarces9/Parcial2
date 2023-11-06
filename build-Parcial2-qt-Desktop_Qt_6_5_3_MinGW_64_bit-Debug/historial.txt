@@ -1,0 +1,12 @@
+
+Jugaron: Angie y Juan en la fecha:Sun Nov 05 19:07:34 2023
+
+Ganador: Angie con fichas: 45
+
+Jugaron: Angie y Jose en la fecha:Sun Nov 05 19:07:34 2023
+
+Ganador: Angie con fichas: 35
+
+Jugaron: Angie y pepe en la fecha:Sun Nov 05 19:07:34 2023
+
+Ganador: Angie con fichas: 45
