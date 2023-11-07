@@ -17,7 +17,6 @@ public:
     bool tablero_lleno();
     int contar_fichas(char color);
     void CambiarColorDeFichas(int fila, int columna, int deltaFila, int deltaColumna, char color);
-    int getTam() const;
     char obtenerValor(int fila,int columna);
     bool vrf_mov_disp(char color);
 };

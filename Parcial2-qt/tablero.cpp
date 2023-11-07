@@ -6,11 +6,6 @@
 using namespace std;
 
 
-int tablero::getTam() const
-{
-    return tam;
-}
-
 char tablero::obtenerValor(int fila, int columna)
 {
     return estado[fila][columna];
